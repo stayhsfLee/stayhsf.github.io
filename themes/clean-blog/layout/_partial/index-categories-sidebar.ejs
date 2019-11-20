@@ -1,0 +1,22 @@
+<%
+    var categories_lvl1 = new Set();
+    posts.forEach(function(item)
+        {
+            if (item.categories.length > 0){
+                categories_lvl1.add(
+                    '<a href="' + config.root + '/categories/' + item.path.split("/")[0] + '" class="badge badge-light" style="background-color: #fff; color: #111">' + item.path.split("/")[0] + '</a></br>')
+            };
+        });
+    var categories_text = [];
+    categories_lvl1.forEach(
+        function(ca) {
+            categories_text.push(ca);
+        }
+    );
+
+%>
+
+<%- categories_text.join("\n") %>
+
+
+

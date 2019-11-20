@@ -1,0 +1,44 @@
+# Header
+menu:
+  Home: /
+  About: /about
+  Github:
+    url: https://github.com/stayhsfLee
+    icon: github
+
+# Title on top left of menu. Leave empty to use main blog title
+menu_title: Stay Hungry, Stay Foolish.
+
+# URL of the Home page image
+index_cover: https://stayhsflee.github.io/stayhsflee-blog/img/home-bg.jpg
+
+# Default post title
+default_post_title: title.md
+
+# Comments. Choose one by filling up the information
+comments:
+  # Disqus comments
+  disqus_shortname:
+  # Facebook comments
+  facebook:
+    appid:
+    comment_count: 5
+    comment_colorscheme: light
+
+# Google Analytics Tracking ID
+google_analytics:
+
+# Addthis ID
+addthis:
+
+# set your own favicon
+favicon:
+
+# Social Accounts
+twitter_url:
+twitter_handle:
+facebook_url:
+github_url: https://github.com/stayhsfLee
+gitlab_url:
+linkedin_url:
+mailto:
