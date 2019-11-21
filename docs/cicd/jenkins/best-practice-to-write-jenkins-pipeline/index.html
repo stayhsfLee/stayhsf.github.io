@@ -13,8 +13,10 @@
     
 
     
-        <meta name="description" content="Use Parameters to get your pipeline easy to migrateJenkins Parameters Syntax
-12345678910111213pipeline&amp;#123;    parameters &amp;#123;        string(name: "/>
+        <meta name="description" content="Summary Tips
+use workflow control to make your pipeline much more easy-understanding.
+use parameters to make you pipeline easy to migrate.
+use global "/>
     
 
     <!--Author-->
@@ -29,8 +31,10 @@
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Use Parameters to get your pipeline easy to migrateJenkins Parameters Syntax
-12345678910111213pipeline&amp;#123;    parameters &amp;#123;        string(name: "/>
+        <meta property="og:description" content="Summary Tips
+use workflow control to make your pipeline much more easy-understanding.
+use parameters to make you pipeline easy to migrate.
+use global "/>
     
 
     <!--Open Graph Site Name-->
@@ -198,7 +202,12 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h2 id="Use-Parameters-to-get-your-pipeline-easy-to-migrate"><a href="#Use-Parameters-to-get-your-pipeline-easy-to-migrate" class="headerlink" title="Use Parameters to get your pipeline easy to migrate"></a>Use Parameters to get your pipeline easy to migrate</h2><p><a href="https://jenkins.io/doc/book/pipeline/syntax/#parameters" target="_blank" rel="noopener">Jenkins Parameters Syntax</a></p>
+                <h2 id="Summary-Tips"><a href="#Summary-Tips" class="headerlink" title="Summary Tips"></a>Summary Tips</h2><ol>
+<li>use workflow control to make your pipeline much more easy-understanding.</li>
+<li>use parameters to make you pipeline easy to migrate.</li>
+<li>use global variables to define your const variables.</li>
+</ol>
+<h2 id="Use-Parameters-to-get-your-pipeline-easy-to-migrate"><a href="#Use-Parameters-to-get-your-pipeline-easy-to-migrate" class="headerlink" title="Use Parameters to get your pipeline easy to migrate"></a>Use Parameters to get your pipeline easy to migrate</h2><p><a href="https://jenkins.io/doc/book/pipeline/syntax/#parameters" target="_blank" rel="noopener">Jenkins Parameters Syntax</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pipeline&#123;</span><br><span class="line">    parameters &#123;</span><br><span class="line">        string(name: &apos;PERSON&apos;, defaultValue: &apos;Mr Jenkins&apos;, description: &apos;Who should I say hello to?&apos;)</span><br><span class="line"></span><br><span class="line">        text(name: &apos;BIOGRAPHY&apos;, defaultValue: &apos;&apos;, description: &apos;Enter some information about the person&apos;)</span><br><span class="line"></span><br><span class="line">        booleanParam(name: &apos;TOGGLE&apos;, defaultValue: true, description: &apos;Toggle this value&apos;)</span><br><span class="line"></span><br><span class="line">        choice(name: &apos;CHOICE&apos;, choices: [&apos;One&apos;, &apos;Two&apos;, &apos;Three&apos;], description: &apos;Pick something&apos;)</span><br><span class="line"></span><br><span class="line">        password(name: &apos;PASSWORD&apos;, defaultValue: &apos;SECRET&apos;, description: &apos;Enter a password&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
