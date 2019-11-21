@@ -28,6 +28,8 @@ pipeline{
 }
 ```
 
+---
+
 How to deal with errors
 ---
 
@@ -132,6 +134,7 @@ How to set your `environment variables`?
 There are two scopes of environment variables you can specify.
 
 * throughout the pipeline
+
 * take effect only in one stages.stage
 ```
 pipeline {
