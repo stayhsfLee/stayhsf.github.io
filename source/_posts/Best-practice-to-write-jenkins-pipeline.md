@@ -45,8 +45,6 @@ How to deal with errors
 ---
 
 
-    
-
 * Error occurs during executing commands
   
   [Jenkins TRY_CATCH_FINALLY Syntax](https://jenkins.io/doc/book/pipeline/syntax/#flow-control)
