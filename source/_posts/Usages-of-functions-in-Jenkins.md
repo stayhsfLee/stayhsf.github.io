@@ -11,4 +11,4 @@ Summary
 ===
 
 1. use shell output as the function result
-2. 
+
