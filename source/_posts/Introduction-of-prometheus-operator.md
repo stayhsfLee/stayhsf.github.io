@@ -7,7 +7,7 @@ categories:
 - prometheus
 ---
 
-##Related Documentations
+## Related Documentations
 
 
 * [Design Doc](https://github.com/coreos/prometheus-operator/blob/master/Documentation/design.md)

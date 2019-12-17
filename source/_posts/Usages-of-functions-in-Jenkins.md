@@ -7,7 +7,7 @@ categories:
 - jenkins
 ---
 
-##1. use shell output as the function result
+## 1. use shell output as the function result
 
 ```groovy
 script{

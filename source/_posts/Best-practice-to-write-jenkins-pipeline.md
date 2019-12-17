@@ -7,14 +7,14 @@ categories:
 - jenkins
 ---
 
-#Summary Tips
+# Summary Tips
 
 1. use workflow control to make your pipeline much more easy-understanding.
 2. use parameters to make you pipeline easy to migrate.
 3. use global variables to define your const variables.
 
 ---
-##Use Parameters to get your pipeline easy to migrate
+## Use Parameters to get your pipeline easy to migrate
 
 
 [Jenkins Parameters Syntax](https://jenkins.io/doc/book/pipeline/syntax/#parameters)
@@ -37,10 +37,10 @@ pipeline{
 
 ---
 
-##How to deal with errors
+## How to deal with errors
 
 
-#####1. Error occurs during executing commands
+##### 1. Error occurs during executing commands
   
   [Jenkins TRY_CATCH_FINALLY Syntax](https://jenkins.io/doc/book/pipeline/syntax/#flow-control)
 
@@ -61,7 +61,7 @@ pipeline{
     }
     ```
 
-#####2. Global Errors Handlers
+##### 2. Global Errors Handlers
 
     use `post` [( Jenkins Post Syntax )](https://jenkins.io/doc/book/pipeline/syntax/#post) to control the global workflow
 
@@ -90,7 +90,7 @@ pipeline{
     ```
 ----
 
-##How to use the `custom workspace` instead of `$HOME/.jenkins/workspace`
+## How to use the `custom workspace` instead of `$HOME/.jenkins/workspace`
 
 [Jenkins Customs Workspace Syntax](https://jenkins.io/doc/book/pipeline/syntax/#agent-parameters)
 ```
@@ -103,7 +103,7 @@ agent {
 ```
 ----
 
-##How to define your `global variables` to avoid duplicate codes?
+## How to define your `global variables` to avoid duplicate codes?
 
 ```
 def current_time
@@ -127,7 +127,7 @@ pipeline {
 
 ---
 
-##How to set your `environment variables`?
+## How to set your `environment variables`?
 
 [Jenkins Environment Variables Syntax](https://jenkins.io/doc/book/pipeline/syntax/#environment)
 
@@ -160,7 +160,7 @@ pipeline {
 
 ---
 
-##Parallel steps
+## Parallel steps
 
 [Jenkins Parallel Syntax](https://jenkins.io/doc/book/pipeline/syntax/#environment)
 
