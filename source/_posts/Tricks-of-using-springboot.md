@@ -6,7 +6,8 @@ catagories:
 - springboot
 ---
 
-###1. How to escape the dollar sign in spring YAML configuration
+How to escape the dollar sign in spring YAML configuration
+----
 
 Why not try using ${sys:$} which is ugly but effective. 
 I think no one will use $ as the key.
@@ -15,7 +16,8 @@ My comment in stackoverflow: https://stackoverflow.com/a/59298031/12522484
 
 ---
 
-###2. How does springboot deserialize the configuration object in `application/yaml` ?
+### 2. How does springboot deserialize the configuration object in `application/yaml` ?
+
 
 SpringBoot use `constructor` and `setters (setX function)` to create the object you need.
 
