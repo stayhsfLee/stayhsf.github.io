@@ -7,11 +7,16 @@ categories:
 - jenkins
 ---
 
-Summary
-===
+##1. use shell output as the function result
 
-1. use shell output as the function result
-
+```groovy
+script{
+    LOCALIP = sh (
+        script: 'hostname -i',
+        returnStdout: true
+    ).trim()
+}
+```
 
 
 
