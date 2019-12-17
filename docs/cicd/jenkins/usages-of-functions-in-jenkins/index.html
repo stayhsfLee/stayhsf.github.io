@@ -206,7 +206,7 @@
             
 
             <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="font-size: small;">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="font-size: 13pt;">
                 <h2 id="1-use-shell-output-as-the-function-result"><a href="#1-use-shell-output-as-the-function-result" class="headerlink" title="1. use shell output as the function result"></a>1. use shell output as the function result</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">script&#123;</span><br><span class="line">    LOCALIP = sh (</span><br><span class="line"><span class="symbol">        script:</span> <span class="string">'hostname -i'</span>,</span><br><span class="line"><span class="symbol">        returnStdout:</span> <span class="literal">true</span></span><br><span class="line">    ).trim()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
