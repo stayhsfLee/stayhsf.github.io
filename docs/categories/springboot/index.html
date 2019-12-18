@@ -13,9 +13,6 @@
     
 
     
-        <meta name="description" content="1. How to escape the dollar sign in spring YAML configuration
-Why not try using ${sys:$} which is ugly but effective.I think no one will use $ as the "/>
-    
 
     <!--Author-->
     
@@ -24,13 +21,10 @@ Why not try using ${sys:$} which is ugly but effective.I think no one will use $
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Tricks of using springboot"/>
+        <meta property="og:title" content="StayhsfLee&#39;s Blog"/>
     
 
     <!--Open Graph Description-->
-    
-        <meta property="og:description" content="1. How to escape the dollar sign in spring YAML configuration
-Why not try using ${sys:$} which is ugly but effective.I think no one will use $ as the "/>
     
 
     <!--Open Graph Site Name-->
@@ -38,7 +32,7 @@ Why not try using ${sys:$} which is ugly but effective.I think no one will use $
 
     <!--Type page-->
     
-        <meta property="og:type" content="article"/>
+        <meta property="og:type" content="website"/>
     
 
     <!--Page Cover-->
@@ -57,7 +51,7 @@ Why not try using ${sys:$} which is ugly but effective.I think no one will use $
 
     <!-- Title -->
     
-    <title>Tricks of using springboot - StayhsfLee&#39;s Blog</title>
+    <title>springboot - StayhsfLee&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -154,79 +148,49 @@ Why not try using ${sys:$} which is ugly but effective.I think no one will use $
 </nav>
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
+    
 
+<!-- Page Header -->
+<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('https://stayhsflee.github.io/stayhsflee-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>Tricks of using springboot</h1>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        
-                            2019-12-12
-                        
-                    </span>
+                <div class="site-heading">
+                    <h1>springboot</h1>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
-
-
-<a href="/stayhsflee-blog/tags/springboot/">#springboot</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                </div>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             
-
-            <!-- Gallery -->
+                <div class="post-preview">
+    <a href="/stayhsflee-blog/springboot/tricks-of-using-springboot/">
+        <h1 class="post-title archive">
+            Tricks of using springboot
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2019-12-12
+    </p>
+</div>
             
-
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="font-size: 13pt;">
-                <h3 id="1-How-to-escape-the-dollar-sign-in-spring-YAML-configuration"><a href="#1-How-to-escape-the-dollar-sign-in-spring-YAML-configuration" class="headerlink" title="1. How to escape the dollar sign in spring YAML configuration"></a>1. How to escape the dollar sign in spring YAML configuration</h3><hr>
-<p>Why not try using <code>${sys:$}</code> which is ugly but effective.<br>I think no one will use $ as the key.</p>
-<p>My comment in stackoverflow: <a href="https://stackoverflow.com/a/59298031/12522484" target="_blank" rel="noopener">https://stackoverflow.com/a/59298031/12522484</a></p>
-<hr>
-<h3 id="2-How-does-springboot-deserialize-the-configuration-object-in-application-yaml"><a href="#2-How-does-springboot-deserialize-the-configuration-object-in-application-yaml" class="headerlink" title="2. How does springboot deserialize the configuration object in application/yaml ?"></a>2. How does springboot deserialize the configuration object in <code>application/yaml</code> ?</h3><p>SpringBoot use <code>constructor</code> and <code>setters (setX function)</code> to create the object you need.</p>
-<p><code>Lombok</code>: when you use @Value in your class definition, you won’t get the setters and only construction of all args will be generated. So you need to use <code>@Data</code> instead of <code>@Value</code>.</p>
-<p><code>Jackson</code>: Polymorphic type won’t work.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Using Id mechanism to determine the subclass.</span><br><span class="line">You can use the `property` field to define which field in class is used by unique search.</span><br><span class="line">@JsonTypeInfo(</span><br><span class="line">    use = JsonTypeInfo.Id.NAME,</span><br><span class="line">    include = JsonTypeInfo.As.EXISTING_PROPERTY,</span><br><span class="line">    property = &quot;type&quot;,</span><br><span class="line">    visible = true)</span><br><span class="line">@JsonSubTypes(&#123;</span><br><span class="line">    @JsonSubTypes.Type(value = Dog.class, name = &quot;type value in class&quot;)&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-                
-            </div>
-
-            <!-- Comments -->
-            
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
-
-
-                </div>
-            
+            <div class="archive-before-pagination"></div>
+            <ul class="pager">
+    
+    
+</ul>
         </div>
     </div>
-</article>
+</div>
+
 
     <!-- Footer -->
     <hr />

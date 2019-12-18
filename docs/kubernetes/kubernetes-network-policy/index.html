@@ -13,6 +13,10 @@
     
 
     
+        <meta name="description" content="Responsibility of Network PolicyControl the network traffic flow between pods and other network endpoints.
+
+PrerequisitesIn your kubernetes cluster, t"/>
+    
 
     <!--Author-->
     
@@ -21,10 +25,14 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="StayhsfLee&#39;s Blog"/>
+        <meta property="og:title" content="Kubernetes Network Policy"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Responsibility of Network PolicyControl the network traffic flow between pods and other network endpoints.
+
+PrerequisitesIn your kubernetes cluster, t"/>
     
 
     <!--Open Graph Site Name-->
@@ -32,7 +40,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -51,7 +59,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019 - StayhsfLee&#39;s Blog</title>
+    <title>Kubernetes Network Policy - StayhsfLee&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -148,127 +156,83 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('https://stayhsflee.github.io/stayhsflee-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2019</h1>
+                <div class="post-heading">
+                    <h1>Kubernetes Network Policy</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-12-17
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/stayhsflee-blog/tags/kubernetes/">#kubernetes</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/stayhsflee-blog/categories/kubernetes/">kubernetes</a>
+
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/stayhsflee-blog/shell/shell-manual/">
-        <h1 class="post-title archive">
-            Shell Manual
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-12-17
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/stayhsflee-blog/kubernetes/kubernetes-network-policy/">
-        <h1 class="post-title archive">
-            Kubernetes Network Policy
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-12-17
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="font-size: 13pt;">
+                <h2 id="Responsibility-of-Network-Policy"><a href="#Responsibility-of-Network-Policy" class="headerlink" title="Responsibility of Network Policy"></a>Responsibility of <code>Network Policy</code></h2><p><strong>Control the network traffic flow</strong> between pods and other network endpoints.</p>
+<hr>
+<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p>In your kubernetes cluster, the network plugin should support the <code>Network Policy</code>.</p>
+<hr>
+<h3 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work ?"></a>How does it work ?</h3><p><code>Network Policy</code> takes effect inside a certain namespace. </p>
+<p>It uses <code>label-selector</code> to choose the pods which should </p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/stayhsflee-blog/springboot/tricks-of-using-springboot/">
-        <h1 class="post-title archive">
-            Tricks of using springboot
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-12-12
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/stayhsflee-blog/kubernetes/prometheus/introduction-of-prometheus-operator/">
-        <h1 class="post-title archive">
-            Introduction of prometheus-operator
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-12-11
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/stayhsflee-blog/cicd/jenkins/usages-of-functions-in-jenkins/">
-        <h1 class="post-title archive">
-            Usages of functions in Jenkins
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-11-21
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/stayhsflee-blog/cicd/jenkins/best-practice-to-write-jenkins-pipeline/">
-        <h1 class="post-title archive">
-            Best practice to write jenkins pipeline
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-11-20
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/stayhsflee-blog/cicd/travis/how-to-use-travis-ci/">
-        <h1 class="post-title archive">
-            How to use travis CI
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-11-19
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
