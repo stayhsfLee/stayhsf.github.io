@@ -1,6 +1,6 @@
 ---
 title: Tricks of using springboot
-date: 2019-12-12 13:09:19
+date: 2019-07-12 13:09:19
 tags: springboot
 categories:
 - springboot

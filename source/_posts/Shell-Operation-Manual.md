@@ -1,7 +1,7 @@
 ---
 layout: posts
-title: Shell Manual
-date: 2019-12-17 16:40:48
+title: Shell Operation Manual
+date: 2019-04-17 16:40:48
 tags: shell
 categories:
 - shell

@@ -1,7 +1,7 @@
 ---
 title: Usages of functions in Jenkins
-date: 2019-11-21 15:22:25
-tags: jenkins-functions
+date: 2019-08-21 15:22:25
+tags: jenkins
 categories:
 - cicd
 - jenkins
