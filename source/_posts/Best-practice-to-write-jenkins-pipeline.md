@@ -7,6 +7,8 @@ categories:
 - jenkins
 ---
 
+[toc]
+
 # Summary Tips
 
 1. use workflow control to make your pipeline much more easy-understanding.
@@ -14,12 +16,12 @@ categories:
 3. use global variables to define your const variables.
 
 ---
-## Use Parameters to get your pipeline easy to migrate
+## 1. Use Parameters to get your pipeline easy to migrate
 
 
 [Jenkins Parameters Syntax](https://jenkins.io/doc/book/pipeline/syntax/#parameters)
 
-```
+```groovy
 pipeline{
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -37,14 +39,14 @@ pipeline{
 
 ---
 
-## How to deal with errors
+## 2. How to deal with errors
 
 
 ##### 1. Error occurs during executing commands
   
   [Jenkins TRY_CATCH_FINALLY Syntax](https://jenkins.io/doc/book/pipeline/syntax/#flow-control)
 
-    ```
+    ```groovy
     stage('Example') {
         try {
             sh 'exit 1'
@@ -65,7 +67,7 @@ pipeline{
 
     use `post` [( Jenkins Post Syntax )](https://jenkins.io/doc/book/pipeline/syntax/#post) to control the global workflow
 
-    ```
+    ```groovy
     pipeline {
         agent any
         stages {
@@ -90,10 +92,10 @@ pipeline{
     ```
 ----
 
-## How to use the `custom workspace` instead of `$HOME/.jenkins/workspace`
+## 3. How to use the `custom workspace` instead of `$HOME/.jenkins/workspace`
 
 [Jenkins Customs Workspace Syntax](https://jenkins.io/doc/book/pipeline/syntax/#agent-parameters)
-```
+```groovy
 agent {
     node {
         label 'my-defined-label'
@@ -103,9 +105,9 @@ agent {
 ```
 ----
 
-## How to define your `global variables` to avoid duplicate codes?
+## 4. How to define your `global variables` to avoid duplicate codes?
 
-```
+```groovy
 def current_time
 pipeline {
     agent any
@@ -127,7 +129,7 @@ pipeline {
 
 ---
 
-## How to set your `environment variables`?
+## 5. How to set your `environment variables`?
 
 [Jenkins Environment Variables Syntax](https://jenkins.io/doc/book/pipeline/syntax/#environment)
 
@@ -136,7 +138,7 @@ There are two scopes of environment variables you can specify.
 * throughout the pipeline
 
 * take effect only in one stages.stage
-```
+```groovy
 pipeline {
     agent any
     // throughout the pipeline 
@@ -160,13 +162,13 @@ pipeline {
 
 ---
 
-## Parallel steps
+## 6. Parallel steps
 
 [Jenkins Parallel Syntax](https://jenkins.io/doc/book/pipeline/syntax/#environment)
 
 use `parallel` feature in `pipeline.stages.stage`
 
-```
+```groovy
 pipeline{
     agent { label 'master' }
     options{
@@ -190,4 +192,29 @@ pipeline{
         }
     }
 }
+```
+## 7. function usages
+
+You can't get variables defined in your pipelines in functions. But you can get access to the env parameters.
+
+```groovy
+
+def report_success(msg) {
+    script {
+        report_msg("### ${env.JOB_BASE_NAME}  \n\n\n![ss](https://i.loli.net/2019/08/01/5d42cd8e2960385802.png)  \n\n\n${msg}")
+    }
+}
+def report_error(msg) {
+    script {
+        report_msg("### ${env.JOB_BASE_NAME}  \n\n\n![ss](https://i.loli.net/2019/08/01/5d42cd8e1901830740.png)  \n\n\n${msg} \n\n\nJenkins Address: ${env.JENKINS_PIPELINE_ADDRESS}/${env.BUILD_NUMBER}")
+    }
+}
+def report_msg(msg) {
+    script {
+        if (params.notify){
+            sh "curl '${env.DINGTALK_NOTIFY_ADDRESS}' -H 'Content-Type: application/json' -d \"{'msgtype': 'markdown', 'markdown': {'title': '${env.JOB_BASE_NAME}', 'text': '${msg}'}}\""
+        }
+    }
+}
+
 ```
