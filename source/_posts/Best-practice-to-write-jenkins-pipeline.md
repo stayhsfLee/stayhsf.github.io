@@ -7,8 +7,6 @@ categories:
 - jenkins
 ---
 
-[toc]
-
 # Summary Tips
 
 1. use workflow control to make your pipeline much more easy-understanding.
