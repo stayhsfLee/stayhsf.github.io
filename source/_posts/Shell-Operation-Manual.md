@@ -12,9 +12,17 @@ categories:
 
 ```shell
 awk '{ print FNR " " $0 }'
+
 ```
 
-## 2. replace text between certain lines
+## 2. Use `awk` to get successive digits in one line
+
+```
+echo 'asd1923aa' | awk 'match($0, /[[:digit:]]+/) {print substr($0, RSTART, RLENGTH)}'
+```
+
+
+## 3. Replace text between certain lines
 
 * shell script
 ```shell

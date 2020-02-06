@@ -15,8 +15,7 @@
     
         <meta name="description" content="1. Print Line Number1awk &#39;&amp;#123; print FNR &#34; &#34; $0 &amp;#125;&#39;
 
-2. replace text between certain lines
-shell script123456789101112131415161718def replaceTex"/>
+2. Use awk to get successive digits in one line1echo &amp;apos;asd1923aa&amp;apos; | awk &amp;apos;matc"/>
     
 
     <!--Author-->
@@ -33,8 +32,7 @@ shell script123456789101112131415161718def replaceTex"/>
     
         <meta property="og:description" content="1. Print Line Number1awk &#39;&amp;#123; print FNR &#34; &#34; $0 &amp;#125;&#39;
 
-2. replace text between certain lines
-shell script123456789101112131415161718def replaceTex"/>
+2. Use awk to get successive digits in one line1echo &amp;apos;asd1923aa&amp;apos; | awk &amp;apos;matc"/>
     
 
     <!--Open Graph Site Name-->
@@ -215,7 +213,10 @@ shell script123456789101112131415161718def replaceTex"/>
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="font-size: 13pt;">
                 <h2 id="1-Print-Line-Number"><a href="#1-Print-Line-Number" class="headerlink" title="1. Print Line Number"></a>1. Print Line Number</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk '&#123; print FNR " " $0 &#125;'</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-replace-text-between-certain-lines"><a href="#2-replace-text-between-certain-lines" class="headerlink" title="2. replace text between certain lines"></a>2. replace text between certain lines</h2><ul>
+<h2 id="2-Use-awk-to-get-successive-digits-in-one-line"><a href="#2-Use-awk-to-get-successive-digits-in-one-line" class="headerlink" title="2. Use awk to get successive digits in one line"></a>2. Use <code>awk</code> to get successive digits in one line</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;asd1923aa&apos; | awk &apos;match($0, /[[:digit:]]+/) &#123;print substr($0, RSTART, RLENGTH)&#125;&apos;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3-Replace-text-between-certain-lines"><a href="#3-Replace-text-between-certain-lines" class="headerlink" title="3. Replace text between certain lines"></a>3. Replace text between certain lines</h2><ul>
 <li>shell script<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def replaceTextBetweenLines(textmarkOfUpperLine, textmarkOfBottomLine, toBeReplacedTest, replacement, filepath) &#123;</span><br><span class="line">    upperLineNumber=$(awk '&#123; print FNR " " $0 &#125;' $filepath | grep "$textmarkOfUpperLine:" | awk '&#123;print $1&#125;')</span><br><span class="line">    bottomLineNumber=$(awk '&#123; print FNR " " $0 &#125;' $filepath | grep "$blobStorageCredential" | awk '&#123;print $1&#125;')</span><br><span class="line"></span><br><span class="line">    sed "$upperLineNumber,$bottomLineNumber s#$toBeReplacedTest#$replacement#g" -i $filepath</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def replaceTextBetweenLines(textmarkOfUpperLine, textmarkOfMiddleLine, textmarkOfBottomLine, toBeReplacedTest, replacement, filepath) &#123;</span><br><span class="line">    upperLineNumber=$(awk '&#123; print FNR " " $0 &#125;' $filepath | grep "$textmarkOfUpperLine:" | awk '&#123;print $1&#125;')</span><br><span class="line">    bottomLineNumber=$(awk '&#123; print FNR " " $0 &#125;' $filepath | grep "$blobStorageCredential" | awk '&#123;print $1&#125;')</span><br><span class="line"></span><br><span class="line">    sed "$upperLineNumber,$bottomLineNumber s#$toBeReplacedTest#$replacement#g" -i $filepath</span><br><span class="line"></span><br><span class="line">    middleLineNumber=$(sed -n "$upperLineNumber,$bottomLineNumber p" $filepath | awk '&#123; print FNR " " $0 &#125;' | grep $textmarkOfMiddleLine | awk '&#123; print $1 &#125;')</span><br><span class="line">    upperLineNumber=$((upperLineNumber + middleLineNumber))</span><br><span class="line"></span><br><span class="line">    sed "$upperLineNumber,$bottomLineNumber s#$toBeReplacedTest#$replacement#g" -i $filepath</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -269,7 +270,7 @@ shell script123456789101112131415161718def replaceTex"/>
 
                     
                 </ul>
-                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">&copy; 2020 John Doe<br></p>
                 <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
                 <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
             </div>
