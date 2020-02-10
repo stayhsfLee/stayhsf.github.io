@@ -30,6 +30,9 @@ awk '{ print FNR " " $0 }'
 
 
 
+
+
+
 ```
 
 ## 2. Use `awk` to get successive digits in one line
