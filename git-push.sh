@@ -1,5 +1,5 @@
-git config  user.email "yutian.lxf@gmail.com"
-git config  user.name "stayhsfLee"
+git config user.email "eric.xiangfu.lee@gmail.com"
+git config user.name "tinkericlee"
 rm -rf docs
 hexo generate
 git add *
