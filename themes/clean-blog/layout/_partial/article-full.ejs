@@ -32,31 +32,50 @@
 <!-- Post Content -->
 <article>
     <div class="container">
+        
         <div class="row">
-
-            <!-- Tags and categories -->
-           <% if (item.categories && item.categories.length || item.tags && item.tags.length) { %>
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    <% if (item.tags && item.tags.length){ %>
-                        <%- partial('article-tags', {item: item}) %>
-                    <% } else { %>
-                        <%- partial('article-categories', {item: item}) %>
-                    <% } %>
+            <div class="col-lg-2 col-md-2" style="margin-left: 20px;">
+                <div class="row">
+                    <h3 style="margin-top: 30px;">Categories</h3>
+                    <%- partial('_partial/index-categories-sidebar', {posts: site.posts}) %>
                 </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    <% if (item.tags && item.tags.length && item.categories && item.categories.length){ %>
-                        <%- partial('article-categories', {item: item}) %>
-                    <% } %>
-                </div>
-            <% } %>
 
-            <!-- Gallery -->
-            <% if (item.photos && item.photos.length){ %>
-                <%- partial('gallery') %>
-            <% } %>
+                <div class="row">
+                    <h3 style="margin-top: 58px;">Tags</h3>
+                </div>
+                <div class="row">
+                    <% site.tags.each(function(item){ %>
+                        <%- partial('_partial/index-tags-sidebar', {item: item}) %>
+                    <% }); %> 
+                </div>
+            </div>
+            
 
             <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="font-size: 13pt;">
+            <div class="col-lg-7 col-lg-offset-2 col-md-9 col-md-offset-2" style="font-size: 13pt;">
+                <div class="row" style="width: 100%">
+                <!-- Tags and categories -->
+                <% if (item.categories && item.categories.length || item.tags && item.tags.length) { %>
+                        <div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 post-tags">
+                            <% if (item.tags && item.tags.length){ %>
+                                <%- partial('article-tags', {item: item}) %>
+                            <% } else { %>
+                                <%- partial('article-categories', {item: item}) %>
+                            <% } %>
+                        </div>
+                        <div class="col-lg-4 col-md-5 post-categories">
+                            <% if (item.tags && item.tags.length && item.categories && item.categories.length){ %>
+                                <%- partial('article-categories', {item: item}) %>
+                            <% } %>
+                        </div>
+                    <% } %>
+
+                    <!-- Gallery -->
+                    <% if (item.photos && item.photos.length){ %>
+                        <%- partial('gallery') %>
+                    <% } %>
+                </div>
+
                 <%- item.content %>
 
                 <% if(theme.addthis) { %>
