@@ -1,18 +1,22 @@
 <%
-    var categories_lvl1 = new Set();
+    var categories = new Set();
     posts.forEach(function(item)
         {
             if (item.categories.length > 0){
-                categories_lvl1.add(
-                    '<a href="' + config.root + '/categories/' + item.path.split("/")[0] + '" class="badge badge-light" style="background-color: #fff; color: #111">' + item.path.split("/")[0] + '</a></br>')
-            };
+                item.categories.forEach(function(category)
+                    {
+                        categories.add(
+                            '<a href="' + config.root + '' + category.path.toLowerCase() + '" class="badge badge-light" style="background-color: #fff; color: #111">' + category.path.replace('categories/', '').substring(0, category.path.replace('categories/', '').length - 1).toLowerCase() + '</a></br>')
+                    })
+            }
         });
     var categories_text = [];
-    categories_lvl1.forEach(
+    categories.forEach(
         function(ca) {
             categories_text.push(ca);
         }
     );
+    categories_text.sort()
 
 %>
 
