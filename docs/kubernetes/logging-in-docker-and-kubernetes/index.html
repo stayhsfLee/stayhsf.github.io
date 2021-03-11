@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Related Containers
+Docker Logging
+Kubernetes Logging
+
+Docker1. Get docker output file path using docker inspect1docker inspect --format=&amp;apos;&amp;#123;&amp;#"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Logging in docker and kubernetes"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Related Containers
+Docker Logging
+Kubernetes Logging
+
+Docker1. Get docker output file path using docker inspect1docker inspect --format=&amp;apos;&amp;#123;&amp;#"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Tinkericlee&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://tinkericlee.github.io/blog/blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://tinkericlee.github.io/blog/blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Logging in docker and kubernetes - Tinkericlee&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-29Z00F0GP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-29Z00F0GP5');
+</script>
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/blog/">Stay Hungry, Stay Foolish.</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/blog/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/blog/about">
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/tinkericlee/" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Logging in docker and kubernetes</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-12-18
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-lg-2 col-md-2" style="margin-left: 20px;">
+                <div class="row">
+                    <h3 style="margin-top: 30px;">Categories</h3>
+                    
+
+<a href="/blog/categories/bigdata/" class="badge badge-light" style="background-color: #fff; color: #111">bigdata</a></br>
+<a href="/blog/categories/bigdata/flink/" class="badge badge-light" style="background-color: #fff; color: #111">bigdata/flink</a></br>
+<a href="/blog/categories/cicd/" class="badge badge-light" style="background-color: #fff; color: #111">cicd</a></br>
+<a href="/blog/categories/cicd/jenkins/" class="badge badge-light" style="background-color: #fff; color: #111">cicd/jenkins</a></br>
+<a href="/blog/categories/cicd/travis/" class="badge badge-light" style="background-color: #fff; color: #111">cicd/travis</a></br>
+<a href="/blog/categories/docker/" class="badge badge-light" style="background-color: #fff; color: #111">docker</a></br>
+<a href="/blog/categories/git/" class="badge badge-light" style="background-color: #fff; color: #111">git</a></br>
+<a href="/blog/categories/kubernetes/" class="badge badge-light" style="background-color: #fff; color: #111">kubernetes</a></br>
+<a href="/blog/categories/kubernetes/prometheus/" class="badge badge-light" style="background-color: #fff; color: #111">kubernetes/prometheus</a></br>
+<a href="/blog/categories/shell/" class="badge badge-light" style="background-color: #fff; color: #111">shell</a></br>
+<a href="/blog/categories/springboot/" class="badge badge-light" style="background-color: #fff; color: #111">springboot</a></br>
+
+
+
+
+                </div>
+
+                <div class="row">
+                    <h3 style="margin-top: 58px;">Tags</h3>
+                </div>
+                <div class="row">
+                    
+                        
+
+<a href="/blog/tags/docker/" class="badge badge-light" style="background-color: #fff; color: #111">#docker</a>
+
+
+
+
+                    
+                        
+
+<a href="/blog/tags/jenkins/" class="badge badge-light" style="background-color: #fff; color: #111">#jenkins</a>
+
+
+
+
+                    
+                        
+
+<a href="/blog/tags/flink/" class="badge badge-light" style="background-color: #fff; color: #111">#flink</a>
+
+
+
+
+                    
+                        
+
+<a href="/blog/tags/prometheus/" class="badge badge-light" style="background-color: #fff; color: #111">#prometheus</a>
+
+
+
+
+                    
+                        
+
+<a href="/blog/tags/kubernetes/" class="badge badge-light" style="background-color: #fff; color: #111">#kubernetes</a>
+
+
+
+
+                    
+                        
+
+<a href="/blog/tags/shell/" class="badge badge-light" style="background-color: #fff; color: #111">#shell</a>
+
+
+
+
+                    
+                        
+
+<a href="/blog/tags/springboot/" class="badge badge-light" style="background-color: #fff; color: #111">#springboot</a>
+
+
+
+
+                    
+                        
+
+<a href="/blog/tags/git/" class="badge badge-light" style="background-color: #fff; color: #111">#git</a>
+
+
+
+
+                    
+                        
+
+<a href="/blog/tags/cicd/" class="badge badge-light" style="background-color: #fff; color: #111">#cicd</a>
+
+
+
+
+                     
+                </div>
+            </div>
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-7 col-lg-offset-2 col-md-9 col-md-offset-2" style="font-size: 13pt;">
+                <div class="row" style="width: 100%">
+                <!-- Tags and categories -->
+                
+                        <div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 post-tags">
+                            
+                                
+
+
+<a href="/blog/tags/kubernetes/">#kubernetes</a>
+
+
+                            
+                        </div>
+                        <div class="col-lg-4 col-md-5 post-categories">
+                            
+                                
+
+<a href="/blog/categories/kubernetes/">kubernetes</a>
+
+                            
+                        </div>
+                    
+
+                    <!-- Gallery -->
+                    
+                </div>
+
+                <h1 id="Related-Containers"><a href="#Related-Containers" class="headerlink" title="Related Containers"></a>Related Containers</h1><ol>
+<li><a href="https://docs.docker.com/config/containers/logging/" target="_blank" rel="noopener">Docker Logging</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/cluster-administration/logging/" target="_blank" rel="noopener">Kubernetes Logging</a></li>
+</ol>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><h3 id="1-Get-docker-output-file-path-using-docker-inspect"><a href="#1-Get-docker-output-file-path-using-docker-inspect" class="headerlink" title="1. Get docker output file path using docker inspect"></a>1. Get docker output file path using <code>docker inspect</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect --format=&apos;&#123;&#123;.LogPath&#125;&#125;&apos; $&#123;container_id&#125;</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/tinkericlee" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2021 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
