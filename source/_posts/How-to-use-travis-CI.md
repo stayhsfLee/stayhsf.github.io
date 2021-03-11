@@ -1,7 +1,7 @@
 ---
 title: How to use travis CI
 date: 2019-11-19 11:37:50
-tags: CICD
+tags: cicd
 categories:
 - cicd
 - travis

@@ -1,9 +1,9 @@
 ---
 title: Git usage you don't know
 date: 2019-12-20 23:01:18
-tags: Git
+tags: git
 categories:
-- Git
+- git
 ---
 
 ## 1. Checkout pull request locally
