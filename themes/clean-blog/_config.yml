@@ -3,14 +3,14 @@ menu:
   Home: /
   About: /about
   Github:
-    url: https://github.com/tinkericlee
+    url: https://github.com/tinkericlee/
     icon: github
 
 # Title on top left of menu. Leave empty to use main blog title
 menu_title: Stay Hungry, Stay Foolish.
 
 # URL of the Home page image
-index_cover: https://tinkericlee.github.io/img/home-bg.jpg
+index_cover: /blog/img/home-bg.jpg
 
 # Default post title
 default_post_title: title.md
@@ -38,7 +38,7 @@ favicon:
 twitter_url:
 twitter_handle:
 facebook_url:
-github_url: https://github.com/stayhsfLee
+github_url: https://github.com/tinkericlee
 gitlab_url:
 linkedin_url:
 mailto:
