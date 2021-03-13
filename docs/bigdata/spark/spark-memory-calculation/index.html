@@ -13,6 +13,8 @@
     
 
     
+        <meta name="description" content="Why the spark use 1408Mi in memoru in default?Formula: MemoryRequest(1Gi) + Max(MemoryRequest * MemoryOverheadFactor, MinMenoryOverhead(384Mi)) = 1408"/>
+    
 
     <!--Author-->
     
@@ -21,10 +23,12 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Tinkericlee&#39;s Blog"/>
+        <meta property="og:title" content="Spark Memory Calculation"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Why the spark use 1408Mi in memoru in default?Formula: MemoryRequest(1Gi) + Max(MemoryRequest * MemoryOverheadFactor, MinMenoryOverhead(384Mi)) = 1408"/>
     
 
     <!--Open Graph Site Name-->
@@ -32,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -51,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>jenkins - Tinkericlee&#39;s Blog</title>
+    <title>Spark Memory Calculation - Tinkericlee&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -146,29 +150,38 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('/blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>#jenkins</h1>
+                <div class="post-heading">
+                    <h1>Spark Memory Calculation</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2021-03-13
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-2 col-md-2" style="margin-left: 20px;">
-            <div class="row">
-                <h3 style="margin-top: 30px;">Categories</h3>
-                
+<!-- Post Content -->
+<article>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-lg-2 col-md-2" style="margin-left: 20px;">
+                <div class="row">
+                    <h3 style="margin-top: 30px;">Categories</h3>
+                    
 
 <a href="/blog/categories/bigdata/" class="badge badge-light" style="background-color: #fff; color: #111">bigdata</a></br>
 <a href="/blog/categories/bigdata/flink/" class="badge badge-light" style="background-color: #fff; color: #111">bigdata/flink</a></br>
@@ -188,148 +201,161 @@
 
 
 
-            </div>
+                </div>
 
-            <div class="row">
-                <h3 style="margin-top: 58px;">Tags</h3>
-            </div>
-            <div class="row">
-                
+                <div class="row">
+                    <h3 style="margin-top: 58px;">Tags</h3>
+                </div>
+                <div class="row">
                     
+                        
 
 <a href="/blog/tags/docker/" class="badge badge-light" style="background-color: #fff; color: #111">#docker</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/jenkins/" class="badge badge-light" style="background-color: #fff; color: #111">#jenkins</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/flink/" class="badge badge-light" style="background-color: #fff; color: #111">#flink</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/prometheus/" class="badge badge-light" style="background-color: #fff; color: #111">#prometheus</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/kubernetes/" class="badge badge-light" style="background-color: #fff; color: #111">#kubernetes</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/shell/" class="badge badge-light" style="background-color: #fff; color: #111">#shell</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/springboot/" class="badge badge-light" style="background-color: #fff; color: #111">#springboot</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/git/" class="badge badge-light" style="background-color: #fff; color: #111">#git</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/cicd/" class="badge badge-light" style="background-color: #fff; color: #111">#cicd</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/minikube/" class="badge badge-light" style="background-color: #fff; color: #111">#minikube</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/kubernetes-tools/" class="badge badge-light" style="background-color: #fff; color: #111">#kubernetes-tools</a>
 
 
 
 
-                
                     
+                        
 
 <a href="/blog/tags/spark/" class="badge badge-light" style="background-color: #fff; color: #111">#spark</a>
 
 
 
 
-                 
+                     
+                </div>
             </div>
-        </div>
-        <div class="col-lg-7 col-lg-offset-2 col-md-9 col-md-offset-2">
             
-                <div class="post-preview">
-    <a href="/blog/cicd/jenkins/best-practice-to-write-jenkins-pipeline/">
-        <h1 class="post-title archive">
-            Best practice to write jenkins pipeline
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-11-20
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-7 col-lg-offset-2 col-md-9 col-md-offset-2" style="font-size: 13pt;">
+                <div class="row" style="width: 100%">
+                <!-- Tags and categories -->
+                
+                        <div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 post-tags">
+                            
+                                
+
+
+<a href="/blog/tags/spark/">#spark</a>
+
+
+                            
+                        </div>
+                        <div class="col-lg-4 col-md-5 post-categories">
+                            
+                                
+
+<a href="/blog/categories/bigdata/">bigdata</a>/ <a href="/blog/categories/bigdata/spark/">spark</a>
+
+                            
+                        </div>
+                    
+
+                    <!-- Gallery -->
+                    
+                </div>
+
+                <h2 id="Why-the-spark-use-1408Mi-in-memoru-in-default"><a href="#Why-the-spark-use-1408Mi-in-memoru-in-default" class="headerlink" title="Why the spark use 1408Mi in memoru in default?"></a>Why the spark use <code>1408Mi</code> in memoru in default?</h2><p>Formula: <code>MemoryRequest(1Gi) + Max(MemoryRequest * MemoryOverheadFactor, MinMenoryOverhead(384Mi)) = 1408
+Mi</code></p>
+<p>All the memory configuration of <code>driver</code> and <code>executor</code> is managed by class <code>SparkConf</code>.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/blog/cicd/jenkins/usages-of-functions-in-jenkins/">
-        <h1 class="post-title archive">
-            Usages of functions in Jenkins
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-08-21
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
