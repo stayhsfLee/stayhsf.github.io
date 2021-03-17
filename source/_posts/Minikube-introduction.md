@@ -32,14 +32,13 @@ So you have to tell `minikube` to expose these ports as you wish.
 
 You can use `minikube start --help` for more information to check how to expose these ports. You can find more details from this [Pull Request](https://github.com/kubernetes/minikube/pull/9404).
 
-
 Step 1
 ---
 
 Use the command below:
 
 ```
-minikube start --ports=10000(you can change the port as you want):8443 --apiserver-names=${your_fixed_ip_address_or_your_domain_address} --base-image="kicbase/stable:v0.0.18"
+minikube start --ports=10000(you can change the port as you want):8443 --apiserver-names=${your_fixed_ip_address_or_your_domain_address} --base-image="kicbase/stable:v0.0.18" --mount=false --mount-string="/usr/local/minikube-files:/host-mount-files"
 ```
 
 `--ports`: tell minikube which port you want to map to machine port.
@@ -47,6 +46,8 @@ minikube start --ports=10000(you can change the port as you want):8443 --apiserv
 `--apiserver-name`: provide this information to let minikube add this into its credential file.
 
 `--base-image`: in default, minikube will pull the image from gcr.io. If you can't visit gcr.io, use this argument topull image from docker.io.
+
+`--mount=false --mount-string="/usr/local/minikube-files:/host-mount-files"`: Mount host path into minikube docker(but i did not see the related mount option in `docker inspect`), then you can use `volumnMount(hostpath option)` to get access to your file in your local machine folder `/usr/local/minikube-files`.
 
 Step 2
 ---
