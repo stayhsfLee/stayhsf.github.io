@@ -47,7 +47,7 @@ minikube start --ports=10000(you can change the port as you want):8443 --apiserv
 
 `--base-image`: in default, minikube will pull the image from gcr.io. If you can't visit gcr.io, use this argument topull image from docker.io.
 
-`--mount=false --mount-string="/usr/local/minikube-files:/host-mount-files"`: Mount host path into minikube docker(but i did not see the related mount option in `docker inspect`), then you can use `volumnMount(hostpath option)` to get access to your file in your local machine folder `/usr/local/minikube-files`.
+`--mount=true --mount-string="/usr/local/minikube-files:/host-mount-files"`: Mount host path into minikube docker(but i did not see the related mount option in `docker inspect`), then you can use `volumnMount(hostpath option)` to get access to your file in your local machine folder `/usr/local/minikube-files`.
 
 Step 2
 ---
