@@ -11,7 +11,7 @@ categories:
 ## Command
 
 ```
-./bin/spark-shell 
+./bin/spark-submit 
   --master k8s://https://sh.tinkmaster.tech:18002  
   --conf spark.kubernetes.container.image=tinkmaster/tinkmaster-docker-spark-3.1.1-hadoop3.2-with-spark-r:alpha 
   --conf spark.kubernetes.namespace=spark 
