@@ -8,7 +8,10 @@ categories:
 - spark
 ---
 
-**Attention**: Please make sure you local machine can be accessed by the `pod` in kubernetes cluster. Because once you have submitted the job from scala shell, the executor will need to communicate with `driver node` to fetch the source data.
+**Attention**: 
+
+1. Please make sure you local machine can be accessed by the `pod` in kubernetes cluster. Because once you have submitted the job from scala shell, the executor will need to communicate with `driver node` to fetch the source data.
+2. If you use `sc.textFile()` to create `RDD` Object, plz make sure the file exists at the same path on your local machine and you pod.
 
 ## Command
 
@@ -27,9 +30,9 @@ categories:
 `spark.kubernetes.container.image`: tell driver to using which image to launch executor
 `spark.kubernetes.container.namespace`: which namespace to run pod
 `spark.kubernetes.authenticate.driver.serviceAccountName`: you'd better create an role to authorize executor pod to create other resouces like configMap and service.
-`spark.kubernetes.driver.volumes.hostPath.hostpath-pv.mount.path`: thepath in executor pods mapping to the host path in host machine
-`spark.kubernetes.driver.volumes.hostPath.hostpath-pv.mount.readOnly`: grant write access to the 
-`spark.kubernetes.driver.volumes.hostPath.hostpath-pv.options.path`: the path in host machine you wanna mount
+`spark.kubernetes.executor.volumes.hostPath.hostpath-pv.mount.path`: thepath in executor pods mapping to the host path in host machine
+`spark.kubernetes.executor.volumes.hostPath.hostpath-pv.mount.readOnly`: grant write access to the 
+`spark.kubernetes.executor.volumes.hostPath.hostpath-pv.options.path`: the path in host machine you wanna mount
 
 
 ## About `hostPath` volume
