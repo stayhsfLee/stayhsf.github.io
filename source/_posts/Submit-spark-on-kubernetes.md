@@ -8,22 +8,29 @@ categories:
 - spark
 ---
 
+**Attention**: Please make sure you local machine can be accessed by the `pod` in kubernetes cluster. Because once you have submitted the job from scala shell, the executor will need to communicate with `driver node` to fetch the source data.
+
 ## Command
 
 ```
-./bin/spark-submit 
+./bin/spark-shell 
   --master k8s://https://sh.tinkmaster.tech:18002  
   --conf spark.kubernetes.container.image=tinkmaster/tinkmaster-docker-spark-3.1.1-hadoop3.2-with-spark-r:alpha 
   --conf spark.kubernetes.namespace=spark 
   --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark-sa 
   --conf spark.kubernetes.driver.volumes.hostPath.hostpath-pv.mount.path=/opt/mount-files
+  --conf spark.kubernetes.driver.volumes.hostPath.hostpath-pv.mount.readOnly=false
+  --conf spark.kubernetes.driver.volumes.hostPath.hostpath-pv.options.path=/host-mount-files-path
 ```
 
 `--master`: set the cluster manager
 `spark.kubernetes.container.image`: tell driver to using which image to launch executor
 `spark.kubernetes.container.namespace`: which namespace to run pod
 `spark.kubernetes.authenticate.driver.serviceAccountName`: you'd better create an role to authorize executor pod to create other resouces like configMap and service.
-`spark.kubernetes.driver.volumes.hostPath.hostpath-pv.mount.path`: which hostpath to mount in executor pods
+`spark.kubernetes.driver.volumes.hostPath.hostpath-pv.mount.path`: thepath in executor pods mapping to the host path in host machine
+`spark.kubernetes.driver.volumes.hostPath.hostpath-pv.mount.readOnly`: grant write access to the 
+`spark.kubernetes.driver.volumes.hostPath.hostpath-pv.options.path`: the path in host machine you wanna mount
+
 
 ## About `hostPath` volume
 
