@@ -1,7 +1,5 @@
 git config user.email "eric.xiangfu.lee@gmail.com"
 git config user.name "tinkericlee"
-rm -rf docs
-hexo generate
 git add *
 if [ -z "$1" ]; then
     git commit -m "[automatic-push] pushed time: $(date)"

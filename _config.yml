@@ -12,15 +12,15 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://tinkericlee.github.io/blog/
-root: /blog/
+url: https://tinkericlee.github.io/
+root: /
 permalink: :category/:post_title/
 pretty_urls:
   trailing_index: true # Set to false to remove trailing index.html from permalinks
 
 # Directory
 source_dir: source
-public_dir: docs
+public_dir: pubclic
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
