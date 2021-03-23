@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Summary Tips
+use workflow control to make your pipeline much more easy-understanding.
+use parameters to make you pipeline easy to migrate.
+use global "/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Best practice to write jenkins pipeline"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Summary Tips
+use workflow control to make your pipeline much more easy-understanding.
+use parameters to make you pipeline easy to migrate.
+use global "/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Tinkericlee&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://tinkericlee.github.io/blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://tinkericlee.github.io/blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Best practice to write jenkins pipeline - Tinkericlee&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-29Z00F0GP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-29Z00F0GP5');
+</script>
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Stay Hungry, Stay Foolish.</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/tinkericlee/" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Best practice to write jenkins pipeline</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-11-20
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-lg-2 col-md-2" style="margin-left: 20px;">
+                <div class="row">
+                    <h3 style="margin-top: 30px;">Categories</h3>
+                    
+
+<a href="/categories/bigdata/" class="badge badge-light" style="background-color: #fff; color: #111">bigdata</a></br>
+<a href="/categories/bigdata/flink/" class="badge badge-light" style="background-color: #fff; color: #111">bigdata/flink</a></br>
+<a href="/categories/bigdata/spark/" class="badge badge-light" style="background-color: #fff; color: #111">bigdata/spark</a></br>
+<a href="/categories/cicd/" class="badge badge-light" style="background-color: #fff; color: #111">cicd</a></br>
+<a href="/categories/cicd/jenkins/" class="badge badge-light" style="background-color: #fff; color: #111">cicd/jenkins</a></br>
+<a href="/categories/cicd/travis/" class="badge badge-light" style="background-color: #fff; color: #111">cicd/travis</a></br>
+<a href="/categories/docker/" class="badge badge-light" style="background-color: #fff; color: #111">docker</a></br>
+<a href="/categories/git/" class="badge badge-light" style="background-color: #fff; color: #111">git</a></br>
+<a href="/categories/kubernetes/" class="badge badge-light" style="background-color: #fff; color: #111">kubernetes</a></br>
+<a href="/categories/kubernetes/minikube/" class="badge badge-light" style="background-color: #fff; color: #111">kubernetes/minikube</a></br>
+<a href="/categories/kubernetes/prometheus/" class="badge badge-light" style="background-color: #fff; color: #111">kubernetes/prometheus</a></br>
+<a href="/categories/kubernetes/tools/" class="badge badge-light" style="background-color: #fff; color: #111">kubernetes/tools</a></br>
+<a href="/categories/shell/" class="badge badge-light" style="background-color: #fff; color: #111">shell</a></br>
+<a href="/categories/springboot/" class="badge badge-light" style="background-color: #fff; color: #111">springboot</a></br>
+
+
+
+
+                </div>
+
+                <div class="row">
+                    <h3 style="margin-top: 58px;">Tags</h3>
+                </div>
+                <div class="row">
+                    
+                        
+
+<a href="/tags/jenkins/" class="badge badge-light" style="background-color: #fff; color: #111">#jenkins</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/docker/" class="badge badge-light" style="background-color: #fff; color: #111">#docker</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/flink/" class="badge badge-light" style="background-color: #fff; color: #111">#flink</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/git/" class="badge badge-light" style="background-color: #fff; color: #111">#git</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/cicd/" class="badge badge-light" style="background-color: #fff; color: #111">#cicd</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/prometheus/" class="badge badge-light" style="background-color: #fff; color: #111">#prometheus</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/kubernetes/" class="badge badge-light" style="background-color: #fff; color: #111">#kubernetes</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/kubernetes-tools/" class="badge badge-light" style="background-color: #fff; color: #111">#kubernetes-tools</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/minikube/" class="badge badge-light" style="background-color: #fff; color: #111">#minikube</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/shell/" class="badge badge-light" style="background-color: #fff; color: #111">#shell</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/spark/" class="badge badge-light" style="background-color: #fff; color: #111">#spark</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/springboot/" class="badge badge-light" style="background-color: #fff; color: #111">#springboot</a>
+
+
+
+
+                     
+                </div>
+            </div>
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-7 col-lg-offset-2 col-md-9 col-md-offset-2" style="font-size: 13pt;">
+                <div class="row" style="width: 100%">
+                <!-- Tags and categories -->
+                
+                        <div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 post-tags">
+                            
+                                
+
+
+<a href="/tags/jenkins/">#jenkins</a>
+
+
+                            
+                        </div>
+                        <div class="col-lg-4 col-md-5 post-categories">
+                            
+                                
+
+<a href="/categories/cicd/">cicd</a>/ <a href="/categories/cicd/jenkins/">jenkins</a>
+
+                            
+                        </div>
+                    
+
+                    <!-- Gallery -->
+                    
+                </div>
+
+                <h1 id="Summary-Tips"><a href="#Summary-Tips" class="headerlink" title="Summary Tips"></a>Summary Tips</h1><ol>
+<li>use workflow control to make your pipeline much more easy-understanding.</li>
+<li>use parameters to make you pipeline easy to migrate.</li>
+<li>use global variables to define your const variables.</li>
+</ol>
+<hr>
+<h2 id="1-Use-Parameters-to-get-your-pipeline-easy-to-migrate"><a href="#1-Use-Parameters-to-get-your-pipeline-easy-to-migrate" class="headerlink" title="1. Use Parameters to get your pipeline easy to migrate"></a>1. Use Parameters to get your pipeline easy to migrate</h2><p><a href="https://jenkins.io/doc/book/pipeline/syntax/#parameters" target="_blank" rel="noopener">Jenkins Parameters Syntax</a></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pipeline&#123;</span><br><span class="line">    parameters &#123;</span><br><span class="line">        string(<span class="string">name:</span> <span class="string">'PERSON'</span>, <span class="string">defaultValue:</span> <span class="string">'Mr Jenkins'</span>, <span class="string">description:</span> <span class="string">'Who should I say hello to?'</span>)</span><br><span class="line"></span><br><span class="line">        text(<span class="string">name:</span> <span class="string">'BIOGRAPHY'</span>, <span class="string">defaultValue:</span> <span class="string">''</span>, <span class="string">description:</span> <span class="string">'Enter some information about the person'</span>)</span><br><span class="line"></span><br><span class="line">        booleanParam(<span class="string">name:</span> <span class="string">'TOGGLE'</span>, <span class="string">defaultValue:</span> <span class="literal">true</span>, <span class="string">description:</span> <span class="string">'Toggle this value'</span>)</span><br><span class="line"></span><br><span class="line">        choice(<span class="string">name:</span> <span class="string">'CHOICE'</span>, <span class="string">choices:</span> [<span class="string">'One'</span>, <span class="string">'Two'</span>, <span class="string">'Three'</span>], <span class="string">description:</span> <span class="string">'Pick something'</span>)</span><br><span class="line"></span><br><span class="line">        password(<span class="string">name:</span> <span class="string">'PASSWORD'</span>, <span class="string">defaultValue:</span> <span class="string">'SECRET'</span>, <span class="string">description:</span> <span class="string">'Enter a password'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-How-to-deal-with-errors"><a href="#2-How-to-deal-with-errors" class="headerlink" title="2. How to deal with errors"></a>2. How to deal with errors</h2><h5 id="1-Error-occurs-during-executing-commands"><a href="#1-Error-occurs-during-executing-commands" class="headerlink" title="1. Error occurs during executing commands"></a>1. Error occurs during executing commands</h5><p>  <a href="https://jenkins.io/doc/book/pipeline/syntax/#flow-control" target="_blank" rel="noopener">Jenkins TRY_CATCH_FINALLY Syntax</a></p>
+<pre><code><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">stage(<span class="string">'Example'</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        sh <span class="string">'exit 1'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (exc) &#123;</span><br><span class="line">        echo <span class="string">'Something failed'</span></span><br><span class="line">        <span class="keyword">throw</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">    finally &#123;</span></span><br><span class="line"><span class="comment">        echo 'finally doing some clean jobs'</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    ***/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><h5 id="2-Global-Errors-Handlers"><a href="#2-Global-Errors-Handlers" class="headerlink" title="2. Global Errors Handlers"></a>2. Global Errors Handlers</h5><pre><code>use `post` [( Jenkins Post Syntax )](https://jenkins.io/doc/book/pipeline/syntax/#post) to control the global workflow
+
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Example'</span>) &#123;aborted</span><br><span class="line">            steps &#123;</span><br><span class="line">                echo <span class="string">'Hello World'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    post &#123; </span><br><span class="line">        always &#123; </span><br><span class="line">            echo <span class="string">'Always say Hello again!'</span></span><br><span class="line">        &#125;</span><br><span class="line">        unsuccessful &#123;</span><br><span class="line">            echo <span class="string">'Doing some clean jobs'</span></span><br><span class="line">        &#125;</span><br><span class="line">        aborted &#123;</span><br><span class="line">            <span class="comment">// send some alertsaborted</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><hr>
+<h2 id="3-How-to-use-the-custom-workspace-instead-of-HOME-jenkins-workspace"><a href="#3-How-to-use-the-custom-workspace-instead-of-HOME-jenkins-workspace" class="headerlink" title="3. How to use the custom workspace instead of $HOME/.jenkins/workspace"></a>3. How to use the <code>custom workspace</code> instead of <code>$HOME/.jenkins/workspace</code></h2><p><a href="https://jenkins.io/doc/book/pipeline/syntax/#agent-parameters" target="_blank" rel="noopener">Jenkins Customs Workspace Syntax</a></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">agent &#123;</span><br><span class="line">    node &#123;</span><br><span class="line">        label <span class="string">'my-defined-label'</span></span><br><span class="line">        customWorkspace <span class="string">'/some/other/path'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="4-How-to-define-your-global-variables-to-avoid-duplicate-codes"><a href="#4-How-to-define-your-global-variables-to-avoid-duplicate-codes" class="headerlink" title="4. How to define your global variables to avoid duplicate codes?"></a>4. How to define your <code>global variables</code> to avoid duplicate codes?</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> current_time</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line">    stages&#123;</span><br><span class="line">        stage(<span class="string">'Initialize the variables'</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                script &#123;</span><br><span class="line">                    <span class="comment">// initialize with timestamp value</span></span><br><span class="line">                    current_time=<span class="keyword">new</span> java.util.Date().getTime()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            steps &#123;</span><br><span class="line">                echo <span class="string">"$&#123;current_time&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-How-to-set-your-environment-variables"><a href="#5-How-to-set-your-environment-variables" class="headerlink" title="5. How to set your environment variables?"></a>5. How to set your <code>environment variables</code>?</h2><p><a href="https://jenkins.io/doc/book/pipeline/syntax/#environment" target="_blank" rel="noopener">Jenkins Environment Variables Syntax</a></p>
+<p>There are two scopes of environment variables you can specify.</p>
+<ul>
+<li><p>throughout the pipeline</p>
+</li>
+<li><p>take effect only in one stages.stage</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line">    <span class="comment">// throughout the pipeline </span></span><br><span class="line">    environment &#123; </span><br><span class="line">        CC = <span class="string">'clang'</span></span><br><span class="line">    &#125;</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Example Username/Password'</span>) &#123;</span><br><span class="line">            <span class="comment">// only in one stage</span></span><br><span class="line">            environment &#123;</span><br><span class="line">                SERVICE_CREDS = credentials(<span class="string">'my-prefined-username-password'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">'echo "$SERVICE_CREDS"'</span></span><br><span class="line">                sh <span class="string">"echo \$SERVICE_CREDS"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h2 id="6-Parallel-steps"><a href="#6-Parallel-steps" class="headerlink" title="6. Parallel steps"></a>6. Parallel steps</h2><p><a href="https://jenkins.io/doc/book/pipeline/syntax/#environment" target="_blank" rel="noopener">Jenkins Parallel Syntax</a></p>
+<p>use <code>parallel</code> feature in <code>pipeline.stages.stage</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">pipeline&#123;</span><br><span class="line">    agent &#123; label <span class="string">'master'</span> &#125;</span><br><span class="line">    options&#123;</span><br><span class="line">        parallelsAlwaysFailFast()</span><br><span class="line">    &#125;</span><br><span class="line">    stages&#123;</span><br><span class="line">        stage(<span class="string">'Build Components Image'</span>) &#123;</span><br><span class="line">            <span class="comment">// failFast true - function as options.parallelsAlwaysFailFast()</span></span><br><span class="line">            parallel &#123;</span><br><span class="line">                stage (<span class="string">'Build UI Image'</span>)&#123;</span><br><span class="line">                    steps &#123;</span><br><span class="line">                        echo <span class="string">'build'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                stage (<span class="string">'Build Webapp Image'</span>)&#123;</span><br><span class="line">                    steps &#123;</span><br><span class="line">                        echo <span class="string">'build'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="7-function-usages"><a href="#7-function-usages" class="headerlink" title="7. function usages"></a>7. function usages</h2><p>You can’t get variables defined in your pipelines in functions. But you can get access to the env parameters.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> report_success(msg) &#123;</span><br><span class="line">    script &#123;</span><br><span class="line">        report_msg(<span class="string">"### $&#123;env.JOB_BASE_NAME&#125;  \n\n\n![ss](https://i.loli.net/2019/08/01/5d42cd8e2960385802.png)  \n\n\n$&#123;msg&#125;"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">def</span> report_error(msg) &#123;</span><br><span class="line">    script &#123;</span><br><span class="line">        report_msg(<span class="string">"### $&#123;env.JOB_BASE_NAME&#125;  \n\n\n![ss](https://i.loli.net/2019/08/01/5d42cd8e1901830740.png)  \n\n\n$&#123;msg&#125; \n\n\nJenkins Address: $&#123;env.JENKINS_PIPELINE_ADDRESS&#125;/$&#123;env.BUILD_NUMBER&#125;"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">def</span> report_msg(msg) &#123;</span><br><span class="line">    script &#123;</span><br><span class="line">        <span class="keyword">if</span> (params.notify)&#123;</span><br><span class="line">            sh <span class="string">"curl '$&#123;env.DINGTALK_NOTIFY_ADDRESS&#125;' -H 'Content-Type: application/json' -d \"&#123;'msgtype': 'markdown', 'markdown': &#123;'title': '$&#123;env.JOB_BASE_NAME&#125;', 'text': '$&#123;msg&#125;'&#125;&#125;\""</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/tinkericlee" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2021 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
