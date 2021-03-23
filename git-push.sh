@@ -11,4 +11,4 @@ if [ -z "$1" ]; then
 else
     git commit -m "$(echo "[automatic-push] $@")"
 fi
-git push
+git push --set-upstream origin source
