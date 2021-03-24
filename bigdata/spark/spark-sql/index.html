@@ -13,9 +13,9 @@
     
 
     
-        <meta name="description" content="Spark Sql GrammarKeywordsWITHReferrence: https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-cte.html
-It’s called Common Table Expression
-S"/>
+        <meta name="description" content="Spark Sql TechniquesPivot and Unpivot行转列 and 列转行
+列转行一般需要将该表的几个字段（列）所属同一种类的字段进行总结，并且新的字段的值就是之前的字段名行转列一般需要将该表的某一字段下的数据进行汇总并且总结成新的多个字段
+All of this two te"/>
     
 
     <!--Author-->
@@ -30,9 +30,9 @@ S"/>
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Spark Sql GrammarKeywordsWITHReferrence: https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-cte.html
-It’s called Common Table Expression
-S"/>
+        <meta property="og:description" content="Spark Sql TechniquesPivot and Unpivot行转列 and 列转行
+列转行一般需要将该表的几个字段（列）所属同一种类的字段进行总结，并且新的字段的值就是之前的字段名行转列一般需要将该表的某一字段下的数据进行汇总并且总结成新的多个字段
+All of this two te"/>
     
 
     <!--Open Graph Site Name-->
@@ -193,6 +193,7 @@ S"/>
 <a href="/categories/cicd/" class="badge badge-light" style="background-color: #fff; color: #111">cicd</a></br>
 <a href="/categories/cicd/jenkins/" class="badge badge-light" style="background-color: #fff; color: #111">cicd/jenkins</a></br>
 <a href="/categories/cicd/travis/" class="badge badge-light" style="background-color: #fff; color: #111">cicd/travis</a></br>
+<a href="/categories/data-science/" class="badge badge-light" style="background-color: #fff; color: #111">data-science</a></br>
 <a href="/categories/docker/" class="badge badge-light" style="background-color: #fff; color: #111">docker</a></br>
 <a href="/categories/git/" class="badge badge-light" style="background-color: #fff; color: #111">git</a></br>
 <a href="/categories/kubernetes/" class="badge badge-light" style="background-color: #fff; color: #111">kubernetes</a></br>
@@ -215,6 +216,14 @@ S"/>
                         
 
 <a href="/tags/jenkins/" class="badge badge-light" style="background-color: #fff; color: #111">#jenkins</a>
+
+
+
+
+                    
+                        
+
+<a href="/tags/data-science/" class="badge badge-light" style="background-color: #fff; color: #111">#data-science</a>
 
 
 
@@ -341,7 +350,10 @@ S"/>
                     
                 </div>
 
-                <h2 id="Spark-Sql-Grammar"><a href="#Spark-Sql-Grammar" class="headerlink" title="Spark Sql Grammar"></a>Spark Sql Grammar</h2><h2 id="Keywords"><a href="#Keywords" class="headerlink" title="Keywords"></a>Keywords</h2><h2 id="WITH"><a href="#WITH" class="headerlink" title="WITH"></a>WITH</h2><p>Referrence: <a href="https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-cte.html" target="_blank" rel="noopener">https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-cte.html</a></p>
+                <h2 id="Spark-Sql-Techniques"><a href="#Spark-Sql-Techniques" class="headerlink" title="Spark Sql Techniques"></a>Spark Sql Techniques</h2><h3 id="Pivot-and-Unpivot"><a href="#Pivot-and-Unpivot" class="headerlink" title="Pivot and Unpivot"></a>Pivot and Unpivot</h3><p><code>行转列 and 列转行</code></p>
+<p>列转行一般需要将该表的几个字段（列）所属同一种类的字段进行总结，并且新的字段的值就是之前的字段名<br>行转列一般需要将该表的某一字段下的数据进行汇总并且总结成新的多个字段</p>
+<p>All of this two techniques need to use </p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h2 id="Keywords"><a href="#Keywords" class="headerlink" title="Keywords"></a>Keywords</h2><h2 id="WITH"><a href="#WITH" class="headerlink" title="WITH"></a>WITH</h2><p>Referrence: <a href="https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-cte.html" target="_blank" rel="noopener">https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-cte.html</a></p>
 <p>It’s called <code>Common Table Expression</code></p>
 <p>Syntax:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WITH common_table_expression [ , ... ]</span><br><span class="line"></span><br><span class="line">While common_table_expression is defined as</span><br><span class="line">expression_name [ ( column_name [ , ... ] ) ] [ AS ] ( query )</span><br></pre></td></tr></table></figure>
