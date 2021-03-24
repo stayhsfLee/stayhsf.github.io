@@ -8,7 +8,17 @@ categories:
 - spark
 ---
 
-## Spark Sql Grammar
+## Spark Sql Techniques
+
+### Pivot and Unpivot
+`行转列 and 列转行`
+
+列转行一般需要将该表的几个字段（列）所属同一种类的字段进行总结，并且新的字段的值就是之前的字段名
+行转列一般需要将该表的某一字段下的数据进行汇总并且总结成新的多个字段
+
+All of this two techniques need to use 
+
+## SQL 
 
 ## Keywords
 

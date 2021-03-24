@@ -44,3 +44,10 @@ To use this method, you have to provide three parameters.
 **Difference with `ds.joinWith`**
 
 `ds.joinWith` is the type belongs to `Type-Preserving Joins
+
+
+### Dateset.coalesce() vs Dataset.repartition() 
+
+Before we discuss the difference between them, we should know that the cost of `repartition operation` is very expensive. You can use coalesce to minimize the data movement among the executors.
+
+Stackoverflow answer: [https://stackoverflow.com/questions/31610971/spark-repartition-vs-coalesce](https://stackoverflow.com/questions/31610971/spark-repartition-vs-coalesce)
