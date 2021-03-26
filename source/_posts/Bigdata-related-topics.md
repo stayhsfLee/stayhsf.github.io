@@ -1,5 +1,5 @@
 ---
-title: Data science related topics
+title: Big data related topics
 date: 2021-03-24 19:09:10
 tags: bigdata
 categories:
@@ -7,6 +7,7 @@ categories:
 - topics
 ---
 
+* Sqoop
 * Kafka
     * Kafka schema registry
 * Hive
@@ -18,3 +19,6 @@ categories:
     * Spark executor
 * Flink
     * Flink Sql
+* Data visualize
+    * Redash
+    * Apache nifi
