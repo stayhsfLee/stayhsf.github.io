@@ -120,7 +120,7 @@ echo 'stop docker'
 
 sudo systemctl stop docker
 
-sudo sed -i 's#"8443/tcp":\[{"HostIp":"127.0.0.1","HostPort":"8443"}\]}#"8443/tcp":\[{"HostIp":"0.0.0.0","HostPort":"1801"}\]}#g' /var/lib/docker/containers/$DOCKER_DIR/hostconfig.json
+sudo sed -i 's#"8443/tcp":\[{"HostIp":"127.0.0.1","HostPort":""}\]}#"8443/tcp":\[{"HostIp":"0.0.0.0","HostPort":"1801"}\]}#g' /var/lib/docker/containers/$DOCKER_DIR/hostconfig.json
 
 sudo systemctl start docker
 
