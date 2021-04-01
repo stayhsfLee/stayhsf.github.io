@@ -83,3 +83,46 @@ Step 5
 ---
 
 Use `kubectl` to visit your `minikube clster`
+
+
+
+## Minikube start scripts
+
+```
+#!/bin/bash
+
+echo 'input password'
+
+sudo ls /
+
+minikube start --nodes=3 --cpus=4 --memory=4g  --apiserver-names=minikube.datavocals.com --base-image="kicbase/stable:v0.0.18" --mount=true --mount-string="/minikube-files:/minikube-files"
+
+echo 'image load'
+
+minikube image load datavocals/hive-2.3.8:alpha
+minikube image load datavocals/hadoop-2.7.7:alpha
+minikube image load datavocals/spark-2.4.7-hadoop-2.7-scala-2.11:alpha
+minikube image load mysql:5.6.50
+minikube image load datavocals/metrics-server-amd64:v0.2.1
+
+echo 'enable metrics server'
+
+minikube addons enable metrics-server
+
+sleep 20
+
+kubectl set image deployment/metrics-server metrics-server=datavocals/metrics-server-amd64:v0.2.1 -n kube-system
+
+DOCKER_ID=$(docker ps -n 100 | grep minikube | awk '{print $1}' | tail -n 1)
+DOCKER_DIR=$(sudo ls /var/lib/docker/containers | grep $DOCKER_ID)
+
+echo 'stop docker'
+
+sudo systemctl stop docker
+
+sudo sed -i 's#"8443/tcp":\[{"HostIp":"127.0.0.1","HostPort":"8443"}\]}#"8443/tcp":\[{"HostIp":"0.0.0.0","HostPort":"1801"}\]}#g' /var/lib/docker/containers/$DOCKER_DIR/hostconfig.json
+
+sudo systemctl start docker
+
+sudo minikube start
+```

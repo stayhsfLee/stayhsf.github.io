@@ -22,3 +22,5 @@ categories:
 * Data visualize
     * Redash
     * Apache nifi
+* Data Management
+    * Atlas
