@@ -21,6 +21,9 @@ categories:
     * Flink Sql
 * Data visualize
     * Redash
+* Data Sync
     * Apache nifi
 * Data Management
     * Atlas
+* Data Search
+    * ELK ( elastic + kibana )

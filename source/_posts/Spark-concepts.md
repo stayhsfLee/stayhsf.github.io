@@ -8,3 +8,12 @@ categories:
 ---
 
 ## Spark Stages
+
+## Spark write formattion
+
+* avro
+* parquet
+* csv
+* jdbc
+* json
+* format
